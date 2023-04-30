@@ -1,2 +1,3 @@
-# apache-airflow-dag
-Forecasting pipeline using apache airflow
+# get into projects folder and run 
+docker-compose up -- build
+
