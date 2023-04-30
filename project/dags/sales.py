@@ -12,8 +12,7 @@ from datetime import timedelta, datetime
 import os
 
 from airflow.operators.python_operator import PythonOperator
-#from warnings import filterwarnings
-#filterwarnings(action='ignore', category=DeprecationWarning, message='`np.bool` is a deprecated alias')
+
 
 
 
@@ -23,7 +22,6 @@ def decode(input_pass):
     base64_message = base64_bytes.decode('ascii')
     return base64_message
 basedirectory=os.getcwd()
-print(os.listdir(basedirectory))
 config_path=os.path.join(basedirectory,"dags/config.json")
 sirma_path=os.path.join(basedirectory,"dags/sarima_model.log")
 sales_data_file = os.path.join(basedirectory,"dags/store_sales.csv")
@@ -32,7 +30,7 @@ with open(config_path) as f:
 #password=decode(config['database']['password'])
 #password_upt= urllib.parse.quote_plus(password)
 db_string = f"postgresql://{config['database']['username']}:{config['database']['password']}@{config['database']['host']}:{config['database']['port']}/{config['database']['database_name']}"
-print(db_string)
+
 
 def inject_data_db():
     try:
