@@ -1,6 +1,0 @@
-08:20:14,989 __main__ INFO Selected SARIMA model parameters:
-08:20:14,990 __main__ INFO p: 1, d: 1, q: 1
-08:20:14,990 __main__ INFO P: 2, D: 0, Q: 0, m: 2
-08:27:56,394 __main__ INFO Selected SARIMA model parameters:
-08:27:56,394 __main__ INFO p: 1, d: 1, q: 1
-08:27:56,394 __main__ INFO P: 2, D: 0, Q: 0, m: 2
