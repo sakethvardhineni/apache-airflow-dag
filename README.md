@@ -29,6 +29,7 @@ The command section specifies the command to run when the container starts up. I
 The healthcheck section specifies a health check for the webserver container. It checks whether the Airflow webserver is running by looking for the existence of the airflow-webserver.pid file in the container. If the file exists, the health check passes. The health check runs every 30 seconds and times out after 30 seconds. If the health check fails 3 times in a row, the container will be considered unhealthy.
 
 ## Dockerfile
+
  Python modules have been included in the image built from the Dockerfile. This would ensure that the sales.py program can be run in a container based on that image without encountering any missing module errors.
  The modules which are required to run the sales.py are
  
@@ -93,7 +94,7 @@ If any error occurs during this process, the function will log the error message
      
      The selected model parameters are logged using the logger.info() method.
      
-   ### Third is model_training_and_forecasting()
+   ### Third is model_training_and_forecasting
      
      An ARIMA object is created with the sales data and the best parameters selected by the model_selection() function.
      
@@ -107,11 +108,7 @@ If any error occurs during this process, the function will log the error message
 
      Any errors that occur during the execution of this function are logged using the logging.error() method with a message that includes the specific error that      occurred.
      
-     
-     
-     
-     
-   ## After triggering the Apache airflow looks like 
+  ## After triggering the Apache airflow looks like 
    
      ![image](https://user-images.githubusercontent.com/132186396/235392806-71a093bd-ee1b-40b7-90bc-07959f62bf72.png)
      
