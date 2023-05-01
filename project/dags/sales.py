@@ -62,7 +62,7 @@ def model_selection():
         logger = logging.getLogger(__name__)
         sales_data_df = database_ingestion()
         sales_data_df['totalsal'].fillna(value=sales_data_df['totalsal'].mean(), inplace=True)
-        model = auto_arima(sales_data_df['totalsal'], seasonal=True, m=2, trace=True)
+        model = auto_arima(sales_data_df['totalsal'], seasonal=True, m=12, trace=True)
         logger.info('Selected SARIMA model parameters:')
         logger.info(f'p: {model.order[0]}, d: {model.order[1]}, q: {model.order[2]}')
         logger.info(f'P: {model.seasonal_order[0]}, D: {model.seasonal_order[1]}, Q: {model.seasonal_order[2]}, m: {model.seasonal_order[3]}')
