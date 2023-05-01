@@ -84,6 +84,7 @@ Load the data into a Pandas DataFrame called sales_data_df
 
 If any error occurs during this process, the function will log the error message using the Python logging module.
    ### Second is modelselection 
+   
      The logging.basicConfig() method is used to set up logging for the script, with the logging level and log file location specified in the configuration dictionary.
      
      The missing values in the totalsal column of the DataFrame are filled with the mean value of the column using the fillna() method.
@@ -111,6 +112,7 @@ If any error occurs during this process, the function will log the error message
      
      
    ## After triggering the Apache airflow looks like 
+   
      ![image](https://user-images.githubusercontent.com/132186396/235392806-71a093bd-ee1b-40b7-90bc-07959f62bf72.png)
      
      Where the borders of the DAG is green which indicate the runnning status is success.
