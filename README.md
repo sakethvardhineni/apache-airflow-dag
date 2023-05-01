@@ -31,6 +31,7 @@ The healthcheck section specifies a health check for the webserver container. It
 ## Dockerfile
  Python modules have been included in the image built from the Dockerfile. This would ensure that the sales.py program can be run in a container based on that image without encountering any missing module errors.
  The modules which are required to run the sales.py are
+ 
  FROM puckel/docker-airflow:1.10.9
  
  RUN pip install requests
