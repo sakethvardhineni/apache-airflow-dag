@@ -67,8 +67,51 @@ The webserver container will be configured with the environment variables, volum
 Once both containers are running, To access the Airflow webserver, navigate to http://localhost:8080 in the web browser.
 
 ## After accesing the http://localhost:8080 the Airflow page looks like 
-![image](https://user-images.githubusercontent.com/132186396/235390295-91d2815f-c920-4d64-9ce3-69af276e1263.png)
+![image](https://user-images.githubusercontent.com/132186396/235391228-3c2b3c6c-47c1-4d79-a73f-efd56985a8e6.png)
 
+In Apache Airflow, a DAG (Directed Acyclic Graph) is a collection of tasks that are organized in a way that reflects their relationships and dependencies. Each DAG represents a workflow that needs to be executed, and it defines the order in which the tasks should be run.
+In over model the tasks are divided into three steps .
+    ### First is database_ingestion 
+    
+ where we Create a database engine object using a db_string which is of the format f"postgresql://{config['database']['username']}:{password_upt}@{config['database']['host']}:{config['database']['port']}/{config['database']['database_name']}" 
+    
+Establish a connection to the database using the engine object
+
+Execute a SQL query called sales_query to retrieve all data from a table called store_salary
+
+Load the data into a Pandas DataFrame called sales_data_df
+
+If any error occurs during this process, the function will log the error message using the Python logging module.
+     ### Second is modelselection 
+     The logging.basicConfig() method is used to set up logging for the script, with the logging level and log file location specified in the configuration dictionary.
+     
+     The missing values in the totalsal column of the DataFrame are filled with the mean value of the column using the fillna() method.
+     
+     The auto_arima() function from the pmdarima library is used to automatically select the best parameters for the SARIMA model based on the sales data.
+     
+     The selected model parameters are logged using the logger.info() method.
+     
+     ### Third is model_training_and_forecasting()
+     
+     An ARIMA object is created with the sales data and the best parameters selected by the model_selection() function.
+     
+    The fit() method is called on the ARIMA object to fit the model to the sales data.
+
+    The forecast() method is called on the fit() object to forecast future sales for the next 30 time steps.
+
+    The forecasted sales data is stored in a DataFrame with the dates as the index and the forecasted sales as the only column.
+
+    The forecast_data DataFrame is written to the forecast table in the database using the to_sql() method with if_exists='append' to add the new data to the          table without overwriting existing data.
+
+     Any errors that occur during the execution of this function are logged using the logging.error() method with a message that includes the specific error that      occurred.
+     
+     ## After triggering the Apache airflow looks like 
+     ![image](https://user-images.githubusercontent.com/132186396/235392806-71a093bd-ee1b-40b7-90bc-07959f62bf72.png)
+     
+     Where the borders of the DAG is green which indicate the runnning status is success.
+     
+
+A DAG is defined as a Python script that contains a set of tasks, each represented by a Python operator. The tasks are arranged in a way that reflects their dependencies, with arrows indicating the direction of data flow.
 
 
 
