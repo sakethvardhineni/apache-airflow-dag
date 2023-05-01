@@ -73,7 +73,7 @@ Once both containers are running, To access the Airflow webserver, navigate to h
 
 In Apache Airflow, a DAG (Directed Acyclic Graph) is a collection of tasks that are organized in a way that reflects their relationships and dependencies. Each DAG represents a workflow that needs to be executed, and it defines the order in which the tasks should be run.
 In over model the tasks are divided into three steps .
-   ### First is database_ingestion 
+### First is database_ingestion 
     
  where we Create a database engine object using a db_string which is of the format f"postgresql://{config['database']['username']}:{password_upt}@{config['database']['host']}:{config['database']['port']}/{config['database']['database_name']}" 
     
@@ -84,9 +84,9 @@ Execute a SQL query called sales_query to retrieve all data from a table called 
 Load the data into a Pandas DataFrame called sales_data_df
 
 If any error occurs during this process, the function will log the error message using the Python logging module.
-   ### Second is modelselection 
+### Second is modelselection 
    
-     The logging.basicConfig() method is used to set up logging for the script, with the logging level and log file location specified in the configuration dictionary.
+     The logging.basicConfig() method is used to set up logging for the script, with the logging level and log file location specified in the configuration             dictionary.
      
      The missing values in the totalsal column of the DataFrame are filled with the mean value of the column using the fillna() method.
      
@@ -94,7 +94,7 @@ If any error occurs during this process, the function will log the error message
      
      The selected model parameters are logged using the logger.info() method.
      
-   ### Third is model_training_and_forecasting
+### Third is model_training_and_forecasting
      
      An ARIMA object is created with the sales data and the best parameters selected by the model_selection() function.
      
