@@ -1,5 +1,5 @@
 #  A sales forecasting pipeline using Apache Airflow 
-## steps to install docker 
+## Steps to install docker 
 Download the Docker Desktop installer for Windows from the Docker website (https://www.docker.com/get-started).
 
 To finish the installation, run the installer and follow the on-screen instructions.
@@ -50,7 +50,7 @@ The healthcheck section specifies a health check for the webserver container. It
 
 
 
-##How to run the Apache-airflow dag
+## How to run the Apache-airflow dag
 
 ### get into projects folder and run 
 docker-compose up -- build
