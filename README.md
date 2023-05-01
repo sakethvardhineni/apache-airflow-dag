@@ -32,18 +32,45 @@ The healthcheck section specifies a health check for the webserver container. It
  Python modules have been included in the image built from the Dockerfile. This would ensure that the sales.py program can be run in a container based on that image without encountering any missing module errors.
  The modules which are required to run the sales.py are
  FROM puckel/docker-airflow:1.10.9
+ 
  RUN pip install requests
+ 
  RUN pip install pandas
+ 
  Run pip install sqlalchemy
+ 
  Run pip install numpy
+ 
  Run pip install pmdarima
+ 
  Run pip install apache-airflow 
+ 
  
 
 
 
+##How to run the Apache-airflow dag
 
-## get into projects folder and run 
+### get into projects folder and run 
 docker-compose up -- build
+
+The command docker-compose up --build starts the containers defined in the docker-compose.yml file and rebuilds if necessary. 
+
+
+The postgres container will be started first, followed by the webserver container.
+
+The Dockerfile specified in the webserver service's build section will be used to build the webserver container.
+
+The webserver container will be configured with the environment variables, volumes, ports, and command specified in the webserver service.
+
+Once both containers are running, To access the Airflow webserver, navigate to http://localhost:8080 in host machine
+
+
+
+
+
+
+
+
 
 
