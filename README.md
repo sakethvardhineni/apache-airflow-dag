@@ -52,7 +52,7 @@ The healthcheck section specifies a health check for the webserver container. It
 
 ## How to run the Apache-airflow dag
 
-### get into projects folder and run 
+### Get into projects folder and run 
 docker-compose up -- build
 
 The command docker-compose up --build starts the containers defined in the docker-compose.yml file and rebuilds if necessary. 
