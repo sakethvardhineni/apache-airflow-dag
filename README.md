@@ -108,6 +108,44 @@ The forecasted sales data is stored in a DataFrame with the dates as the index a
 The forecast_data DataFrame is written to the forecast table in the database using the to_sql() method with if_exists='append' to add the new data to the          table without overwriting existing data.
 
 Any errors that occur during the execution of this function are logged using the logging.error() method with a message that includes the specific error that      occurred.
+
+
+## The code for DAG
+''
+default_args = {
+    'owner': 'airflow',
+    'start_date': datetime(2023, 4, 30),
+    'retries': 0,
+    'retry_delay': timedelta(minutes=5),
+}
+
+dag = DAG(
+'sales',
+default_args=default_args,
+description='A DAG to automate sales forecasting using SARIMA model',
+schedule_interval='@daily',
+catchup=False
+)
+task_read_sales_data = PythonOperator(
+    task_id='read_sales_data',
+    python_callable=database_ingestion,
+    dag=dag
+)
+
+task_select_model_parameters = PythonOperator(
+    task_id='select_model_parameters',
+    python_callable=model_selection,
+    dag=dag
+)
+
+task_train_and_forecast = PythonOperator(
+    task_id='train_and_forecast',
+    python_callable=model_training_and_forecasting,
+    dag= dag
+)
+
+task_read_sales_data >> task_select_model_parameters  >> task_train_and_forecast
+''
      
   ## After triggering the Apache airflow looks like ![image](https://user-images.githubusercontent.com/132186396/235392806-71a093bd-ee1b-40b7-90bc-07959f62bf72.png)
  Where the borders of the DAG is green which indicate the runnning status is success.
