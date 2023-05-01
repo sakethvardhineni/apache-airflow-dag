@@ -8,7 +8,7 @@ Docker should start automatically after installation. You can confirm this by lo
 
 Open a command prompt or PowerShell window and type docker --version to test your installation. This should show the Docker version you installed.
 
-## After installing the docker write a decker-compose.yml file
+## After installing the docker write a docker-compose.yml file
 the version of the python is  3.7.
 
 defined two services: postgres and webserver.
