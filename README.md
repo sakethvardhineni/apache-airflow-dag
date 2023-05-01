@@ -94,10 +94,9 @@ If any error occurs during this process, the function will log the error message
   The selected model parameters are logged using the logger.info() method.
      
 ### Third is model_training_and_forecasting
-
-      An ARIMA object is created with the sales data and the best parameters selected by the model_selection() function.
+An ARIMA object is created with the sales data and the best parameters selected by the model_selection() function.
       
-     The fit() method is called on the ARIMA object to fit the model to the sales data.
+ The fit() method is called on the ARIMA object to fit the model to the sales data.
      
 The forecast() method is called on the fit() object to forecast future sales for the next 30 time steps.
 
