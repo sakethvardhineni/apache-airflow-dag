@@ -64,7 +64,10 @@ The Dockerfile specified in the webserver service's build section will be used t
 
 The webserver container will be configured with the environment variables, volumes, ports, and command specified in the webserver service.
 
-Once both containers are running, you should be able to access the Airflow webserver by going to http://localhost:8080 in your web browser.
+Once both containers are running, To access the Airflow webserver, navigate to http://localhost:8080 in the web browser.
+
+
+
 
 
 
