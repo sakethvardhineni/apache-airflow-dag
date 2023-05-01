@@ -75,7 +75,7 @@ In Apache Airflow, a DAG (Directed Acyclic Graph) is a collection of tasks that 
 In over model the tasks are divided into three steps .
 ### First is database_ingestion 
     
- where we Create a database engine object using a db_string which is of the format f"postgresql://{config['database']['username']}:{password_upt}@{config['database']['host']}:{config['database']['port']}/{config['database']['database_name']}" 
+ where we Create a database engine object using a db_string which is of the format  
     
 Establish a connection to the database using the engine object
 
