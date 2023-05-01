@@ -9,12 +9,12 @@ Open a command prompt or PowerShell window and type docker --version to test you
 ##After installing the docker write a decker-compose.yml file
 the version of the python is  3.7.
 
-we defined two services: postgres and webserver.
+defined two services: postgres and webserver.
 
 The postgres service loads the official postgres image version 9.6 and configures the database's environment variables.
 
 A Dockerfile in the./dockerfiles directory is used to build the webserver service.
-### In the Dockerfile i have imported the modules which are required to run the sales.py python program
+In the Dockerfile i have imported the modules which are required to run the sales.py python program
 
 Because the webserver service is dependent on the postgres service, the postgres service will be started before the webserver service.
 
@@ -26,7 +26,8 @@ The command section specifies the command to run when the container starts up. I
 
 The healthcheck section specifies a health check for the webserver container. It checks whether the Airflow webserver is running by looking for the existence of the airflow-webserver.pid file in the container. If the file exists, the health check passes. The health check runs every 30 seconds and times out after 30 seconds. If the health check fails 3 times in a row, the container will be considered unhealthy.
 
-
+##Dpckerfile
+In the Dockerfile i have imported the modules which are required to run the sales.py python program
 
 
 
