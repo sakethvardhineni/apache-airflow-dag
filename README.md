@@ -72,7 +72,9 @@ Once both containers are running, To access the Airflow webserver, navigate to h
 ![image](https://user-images.githubusercontent.com/132186396/235391228-3c2b3c6c-47c1-4d79-a73f-efd56985a8e6.png)
 
 In Apache Airflow, a DAG (Directed Acyclic Graph) is a collection of tasks that are organized in a way that reflects their relationships and dependencies. Each DAG represents a workflow that needs to be executed, and it defines the order in which the tasks should be run.
-In over model the tasks are divided into three steps .
+
+## There are three tasks which will run in the folloing order
+
 ### First is database_ingestion 
     
  where we Create a database engine object using a db_string which is of the format  f"postgresql://{config['database']['username']}:{password_upt}@{config['database']['host']}:{config['database']['port']}/{config['database']['database_name']}" 
