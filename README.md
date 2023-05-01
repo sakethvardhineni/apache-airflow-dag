@@ -66,6 +66,10 @@ The webserver container will be configured with the environment variables, volum
 
 Once both containers are running, To access the Airflow webserver, navigate to http://localhost:8080 in the web browser.
 
+## After accesing the http://localhost:8080 the Airflow page looks like 
+![image](https://user-images.githubusercontent.com/132186396/235390295-91d2815f-c920-4d64-9ce3-69af276e1263.png)
+
+
 
 
 
