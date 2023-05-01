@@ -1,6 +1,6 @@
 #  A sales forecasting pipeline using Apache Airflow 
 ## steps to install docker 
-###Download the Docker Desktop installer for Windows from the Docker website (https://www.docker.com/get-started).
+Download the Docker Desktop installer for Windows from the Docker website (https://www.docker.com/get-started).
 
 ###To finish the installation, run the installer and follow the on-screen instructions.
 
