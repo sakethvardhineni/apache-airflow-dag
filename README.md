@@ -157,7 +157,7 @@ The third task called task_train_and_forecast runs a Python function model_train
 
 The tasks are ordered using the '>>' so that "task_read_sales_data" is executed before "task_select_model_parameters", and "task_select_model_parameters" is executed before "task_train_and_forecast". The DAG is designed to run without catching up on missed runs.
      
-  ## After triggering the Apache airflow looks like 
+  ## After  Apache airflow gets triggered it  looks like 
   
   ![image](https://user-images.githubusercontent.com/132186396/235392806-71a093bd-ee1b-40b7-90bc-07959f62bf72.png)
   
