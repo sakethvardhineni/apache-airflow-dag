@@ -111,7 +111,7 @@ Any errors that occur during the execution of this function are logged using the
 
 
 ## The code for DAG
-''
+'''
 default_args = {
     'owner': 'airflow',
     'start_date': datetime(2023, 4, 30),
@@ -145,7 +145,7 @@ task_train_and_forecast = PythonOperator(
 )
 
 task_read_sales_data >> task_select_model_parameters  >> task_train_and_forecast
-''
+'''
      
   ## After triggering the Apache airflow looks like ![image](https://user-images.githubusercontent.com/132186396/235392806-71a093bd-ee1b-40b7-90bc-07959f62bf72.png)
  Where the borders of the DAG is green which indicate the runnning status is success.
