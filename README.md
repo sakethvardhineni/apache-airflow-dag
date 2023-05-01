@@ -85,28 +85,21 @@ Load the data into a Pandas DataFrame called sales_data_df
 
 If any error occurs during this process, the function will log the error message using the Python logging module.
 ### Second is modelselection 
-   
-     The logging.basicConfig() method is used to set up logging for the script, with the logging level and log file location specified in the configuration             dictionary.
-     
-     The missing values in the totalsal column of the DataFrame are filled with the mean value of the column using the fillna() method.
-     
-     The auto_arima() function from the pmdarima library is used to automatically select the best parameters for the SARIMA model based on the sales data.
-     
-     The selected model parameters are logged using the logger.info() method.
+ The logging.basicConfig() method is used to set up logging for the script, with the logging level and log file location specified in the configuration             dictionary.
+ 
+ The missing values in the totalsal column of the DataFrame are filled with the mean value of the column using the fillna() method.
+ 
+  The auto_arima() function from the pmdarima library is used to automatically select the best parameters for the SARIMA model based on the sales data.
+  
+  The selected model parameters are logged using the logger.info() method.
      
 ### Third is model_training_and_forecasting
-     
-     An ARIMA object is created with the sales data and the best parameters selected by the model_selection() function.
-     
-    The fit() method is called on the ARIMA object to fit the model to the sales data.
-
-    The forecast() method is called on the fit() object to forecast future sales for the next 30 time steps.
-
-    The forecasted sales data is stored in a DataFrame with the dates as the index and the forecasted sales as the only column.
-
-    The forecast_data DataFrame is written to the forecast table in the database using the to_sql() method with if_exists='append' to add the new data to the          table without overwriting existing data.
-
-     Any errors that occur during the execution of this function are logged using the logging.error() method with a message that includes the specific error that      occurred.
+      An ARIMA object is created with the sales data and the best parameters selected by the model_selection() function.
+     The fit() method is called on the ARIMA object to fit the model to the sales data.
+The forecast() method is called on the fit() object to forecast future sales for the next 30 time steps.
+The forecasted sales data is stored in a DataFrame with the dates as the index and the forecasted sales as the only column.
+The forecast_data DataFrame is written to the forecast table in the database using the to_sql() method with if_exists='append' to add the new data to the          table without overwriting existing data.
+Any errors that occur during the execution of this function are logged using the logging.error() method with a message that includes the specific error that      occurred.
      
   ## After triggering the Apache airflow looks like 
    
