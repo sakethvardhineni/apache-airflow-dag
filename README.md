@@ -146,6 +146,16 @@ task_train_and_forecast = PythonOperator(
 
 task_read_sales_data >> task_select_model_parameters  >> task_train_and_forecast
 ```
+
+The code defines a DAG named "sales" with default arguments and a daily schedule. The DAG has three tasks defined as PythonOperators, each with a task_id and python_callable:
+
+The first task, task_read_sales_data, executes the Python function database_ingestion, which retrieves sales data from a database and returns it as a Pandas DataFrame.
+
+The second task called task_select_model_parameters runs a Python function model_selection which selects the best parameters for a SARIMA (Seasonal Autoregressive Integrated Moving Average) model based on the sales data.
+
+The third task called task_train_and_forecast runs a Python function model_training_and_forecasting which trains the SARIMA model with the selected parameters on the sales data and produces sales forecasts.
+
+The tasks are ordered using the '>>' so that "task_read_sales_data" is executed before "task_select_model_parameters", and "task_select_model_parameters" is executed before "task_train_and_forecast". The DAG is designed to run without catching up on missed runs.
      
   ## After triggering the Apache airflow looks like ![image](https://user-images.githubusercontent.com/132186396/235392806-71a093bd-ee1b-40b7-90bc-07959f62bf72.png)
  Where the borders of the DAG is green which indicate the runnning status is success.
