@@ -6,12 +6,16 @@ import sqlalchemy as db
 from statsmodels.tsa.arima.model import ARIMA
 import numpy as np
 import base64
+import psycopg2
 import urllib
 from airflow import DAG
 from datetime import timedelta, datetime
 import os
 
 from airflow.operators.python_operator import PythonOperator
+
+
+
 
 
 
@@ -32,16 +36,7 @@ with open(config_path) as f:
 db_string = f"postgresql://{config['database']['username']}:{config['database']['password']}@{config['database']['host']}:{config['database']['port']}/{config['database']['database_name']}"
 
 
-def inject_data_db():
-    try:
-        engine = db.create_engine(db_string)
-        connection = engine.connect()
-        sales_data = pd.read_csv(sales_data_file)
-        sales_data.to_sql('store_salary',connection, if_exists='append', index=False)
-    except Exception as e:
-        logging.error(f'Error in database_ingestion {e}')
- 
-inject_data_db()
+
 
 def database_ingestion():
     try:
@@ -60,9 +55,9 @@ def model_selection():
                     format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
                     datefmt='%H:%M:%S')
         logger = logging.getLogger(__name__)
-        sales_data_df = database_ingestion()
+        sales_data_df= database_ingestion()
         sales_data_df['totalsal'].fillna(value=sales_data_df['totalsal'].mean(), inplace=True)
-        model = auto_arima(sales_data_df['totalsal'], seasonal=True, m=12, trace=True)
+        model = auto_arima(sales_data_df['totalsal'], seasonal=True, m=2, trace=True)
         logger.info('Selected SARIMA model parameters:')
         logger.info(f'p: {model.order[0]}, d: {model.order[1]}, q: {model.order[2]}')
         logger.info(f'P: {model.seasonal_order[0]}, D: {model.seasonal_order[1]}, Q: {model.seasonal_order[2]}, m: {model.seasonal_order[3]}')
@@ -124,3 +119,8 @@ task_train_and_forecast = PythonOperator(
 )
 
 task_read_sales_data >> task_select_model_parameters  >> task_train_and_forecast
+
+
+
+
+
